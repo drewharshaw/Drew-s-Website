@@ -1,0 +1,59 @@
+{
+  "name": "drews_website",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.tsx",
+  "author": "Drew Harshaw <HarshawDrew@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build && node server.js",
+    "build": "./node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drewharshaw/Drews-Website.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/drewharshaw/Drews-Website/issues"
+  },
+  "homepage": "http://localhost:3000 ",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.24",
+    "@fortawesome/free-brands-svg-icons": "^5.11.1",
+    "@fortawesome/free-solid-svg-icons": "^5.11.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@material-ui/core": "^4.4.0",
+    "@types/classnames": "^2.2.9",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.1",
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-canvas-nest": "^1.0.10",
+    "react-dom": "^16.9.0",
+    "spectre.css": "^0.5.8"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.8.5",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-hot-middleware": "^2.25.0"
+  }
+}
