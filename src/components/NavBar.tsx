@@ -6,34 +6,41 @@ import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/style.css';
-
+import {colorType} from './Header';
 //to be used in future
 import Tooltip from "@material-ui/core/Tooltip";
+import Typography from '@material-ui/core/Typography';
 
 
-export default function NavBar() {
+interface INavbarProps {
+  textColor: colorType
+}
+
+export default function NavBar(props: INavbarProps) {
 
   return (
     <List className={'navbar'}>
       <ListItem>
         <Button
-        href="/#projects"
-        className={'button'}>
-          Projects
+        href="/#projects">
+          <Typography color={props.textColor}>
+            Projects
+          </Typography>
         </Button>
       </ListItem>
       <ListItem>
         <Button
-        href="/#resume"
-        className={'button'}>
-          Resume
+        href="/#resume">
+           <Typography color={props.textColor}>
+            Resume
+          </Typography>
         </Button>
       </ListItem>
       <ListItem>
         <IconButton
           href="https://github.com/drewharshaw"
         >
-          <FontAwesomeIcon icon={faGithub} className={'navIcon'}/>
+          <FontAwesomeIcon icon={faGithub} color={props.textColor} className={'navIcon'}/>
         </IconButton>
       </ListItem>
     </List>

@@ -26,7 +26,6 @@
     display: flex;
     border: 0;
     border-radius: 3px;
-    padding: 0.625rem 0;
     margin-bottom: 20px;
     color: #555;
     align-items: center;
@@ -129,6 +128,17 @@
     margin: 5px;
 }
 
+.expand {
+    transform: 'rotate(0deg)';
+    margin-left: 'auto';
+    width: 400px;
+    height: 500px;
+    transition: width 2s, height 2s;
+}
+
+.expandOpen {
+    transform: 'rotate(180deg)';
+}
 
 
 
@@ -146,7 +156,7 @@
     position: relative;
     font-size: 20px !important;
     margin-right: 4px;
-    color: white;
+    /*color: white; */
 }
 
 .container {
@@ -214,7 +224,6 @@
 
 .white {
     border: 0;
-    padding: 0.625rem 0;
     margin-bottom: 20px;
     color: #555;
     background: #fff !important;

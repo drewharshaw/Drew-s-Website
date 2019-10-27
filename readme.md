@@ -23,3 +23,5 @@ npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/react-fontawesome
 npm i --save @fortawesome/free-brands-svg-icons
 
+CLSX - CSS conditional construct classNames
+npm install --save clsx

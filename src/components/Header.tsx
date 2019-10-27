@@ -1,12 +1,16 @@
 
 import {withStyles, createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import '../styles/style.css';
+import NavBar from './NavBar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 
 import * as React from 'react';
+
+import {useState} from 'react';
+
 import classNames from "classnames";
 
 // @material-ui/core components
@@ -30,6 +34,9 @@ function HomeLogo(props: SvgIconProps) {
     );
 }
 
+export type colorType = 'primary' | 'secondary';
+
+
 type changeColorOnScroll = {
   height: number,
   color?: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'transparent' | 
@@ -39,7 +46,6 @@ type changeColorOnScroll = {
 interface IHeaderProps {
   color?:  'primary' | 'info' | 'success' | 'warning' | 'danger' | 'transparent' | 
           'white' | 'rose' | 'dark',
-  navBar?: any,
   brand?: string,
   fixed?: boolean,
   absolute?: boolean,
@@ -49,8 +55,7 @@ interface IHeaderProps {
 
 export default function Header(props: IHeaderProps) {
 
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [colorText, setState] = useState<colorType>('secondary');
 
   // using hooks to implement componentDidMount() and componentWillUnmount()
   React.useEffect(() => {
@@ -64,13 +69,11 @@ export default function Header(props: IHeaderProps) {
     };
   });
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const headerColorChange = () => {
     const { color, changeColorOnScroll } = props;
     const windowsScrollTop = window.pageYOffset;
+
+
     if (windowsScrollTop > changeColorOnScroll.height) {
       // turns white 
       document.body
@@ -79,19 +82,22 @@ export default function Header(props: IHeaderProps) {
       document.body
         .getElementsByTagName("header")[0]
         .classList.add(`${changeColorOnScroll.color}`);
+
+        setState('primary');
     } else {
-      //Change header colour
+      // turns translucent
       document.body
         .getElementsByTagName("header")[0]
         .classList.add(`${color}`);
       document.body
         .getElementsByTagName("header")[0]
         .classList.remove(`${changeColorOnScroll.color}`);
-      //Change Narbar button colour
+
+        setState('secondary');
     }
   };
 
-  const { color, navBar, brand, fixed, absolute } = props;
+  const { color, brand, fixed, absolute } = props;
   const appBarClasses = classNames({
     'appBar': true,
     [color]: color,
@@ -111,27 +117,16 @@ export default function Header(props: IHeaderProps) {
           </ListItem>
           <ListItem dense>
             <Grid item xs container direction="column" spacing={2}>
-              <Typography component="div">
+              <Typography component="div" color={colorText}>
                 Drew Harshaw
               </Typography>
-                <Typography>
+                <Typography color={colorText}>
                   Software Engineer
                 </Typography>
             </Grid>
           </ListItem>
         </List>
-        
-        {navBar}
-
-        {/* <Hidden smDown implementation="css">
-          
-        </Hidden>
-
-        <Hidden mdUp>
-        
-        </Hidden>
-        */}
-      
+        <NavBar textColor={colorText}/>
     </Toolbar>
   </AppBar>
   );
