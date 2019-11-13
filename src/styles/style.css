@@ -68,7 +68,12 @@
 }
 */
 
-
+.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
 
 
 
@@ -129,9 +134,9 @@
 }
 
 .expand {
-    transform: 'rotate(0deg)';
-    margin-left: 'auto';
-    width: 400px;
+    transform: rotate(0deg);
+    margin-left: auto;
+    width: 500px;
     height: 500px;
     transition: width 2s, height 2s;
 }

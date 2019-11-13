@@ -30,7 +30,7 @@ export default function NavBar(props: INavbarProps) {
       </ListItem>
       <ListItem>
         <Button
-        href="/#resume">
+        href="https://www.linkedin.com/in/drew-harshaw/">
            <Typography color={props.textColor}>
             Resume
           </Typography>

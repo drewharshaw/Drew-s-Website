@@ -15,13 +15,18 @@ app.get('/images/auto_car.jpg', (req, res)=>{
    res.sendFile(path.resolve(__dirname, 'public', 'images', 'auto_car.jpg'));
 });
 
-app.get('/images/smiles.jpeg', (req, res)=>{
-   res.sendFile(path.resolve(__dirname, 'public', 'images', 'smiles.jpeg'));
-})
-
-app.get('/images/drone.jpg', (req, res)=>{
-   res.sendFile(path.resolve(__dirname, 'public', 'images', 'drone.jpg'));
+app.get('/images/leapMotion.png', (req, res)=>{
+   res.sendFile(path.resolve(__dirname, 'public', 'images', 'leapMotion.png'));
 });
+
+app.get('/images/lokit.jpg', (req, res)=>{
+   res.sendFile(path.resolve(__dirname, 'public', 'images', 'lokit.jpg'));
+});
+
+app.get('/images/unavailable-image.jpg', (req, res)=>{
+   res.sendFile(path.resolve(__dirname, 'public', 'images', 'unavailable-image.jpg'));
+});
+
 
 app.get('/images/panda.jpg', (req, res)=> {
    res.sendFile(path.resolve(__dirname, 'public', 'images', 'panda.jpg'));

@@ -28,7 +28,18 @@ module.exports = {
             use:['style-loader','css-loader']
         },
         {
-            test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+            test: /\.svg$/,
+            use: [
+                {
+                    loader: '@svgr/webpack',
+                    options: {
+                        native: true,
+                    },
+                },
+                ], 
+        },
+        {
+            test: /\.(pdf|jpg|png|gif|ico)$/,
             use: [
                 {
                     loader: 'url-loader'
