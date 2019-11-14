@@ -28,9 +28,16 @@ app.get('/images/unavailable-image.jpg', (req, res)=>{
 });
 
 
-app.get('/images/panda.jpg', (req, res)=> {
-   res.sendFile(path.resolve(__dirname, 'public', 'images', 'panda.jpg'));
+app.get('/images/profile.png', (req, res)=> {
+   res.sendFile(path.resolve(__dirname, 'public', 'images', 'profile.png'));
 });
+
+
+app.get('/images/favicon.ico', (req, res)=> {
+   res.sendFile(path.resolve(__dirname, 'public', 'images', 'favicon.ico'));
+});
+
+
 
 let compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {

@@ -1,6 +1,5 @@
 /****** Header Styling ******/
 
-
 .navbar {
     display: flex;
     flex-direction: row;
@@ -183,11 +182,6 @@
     flex: 1;
 }
 
-.title {
-
-    padding: 32px 32px;
-
-}
 
 /*
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;

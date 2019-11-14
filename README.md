@@ -27,3 +27,5 @@ CLSX - CSS conditional construct classNames
 npm install --save clsx
 
 npm install @svgr/webpack
+
+npm install prettier -D

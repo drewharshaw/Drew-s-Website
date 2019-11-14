@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run build && node server.js",
     "build": "./node_modules/.bin/webpack",
-    "deploy": "aws s3 sync build/ s3://drewharshaw.com"
+    "deploy": "aws s3 sync dist/ s3://drewharshaw.com && aws s3 sync public/images/. s3://drewharshaw.com/images"
   },
   "repository": {
     "type": "git",
@@ -48,6 +48,7 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.19.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.0.4",
