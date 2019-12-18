@@ -20,7 +20,7 @@ export const JohnBowden: teamMember = {
 };
 
 export const SudhirPokhrel: teamMember = {
-  fullName: "SudhirPokhrel",
+  fullName: "Sudhir Pokhrel",
   initial: "SP",
   uid: 3,
   gitLink: "https://github.com/sudhirPok"

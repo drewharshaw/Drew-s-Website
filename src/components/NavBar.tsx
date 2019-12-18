@@ -20,19 +20,23 @@ export default function NavBar(props: INavbarProps) {
     <List className={"navbar"}>
       <ListItem>
         <Link href="/#projects" underline="none">
-          <Typography variant="body1" color={props.textColor}>Projects</Typography>
+          <Typography variant="body1" color={props.textColor}>
+            Projects
+          </Typography>
         </Link>
       </ListItem>
       <ListItem>
-        <Link href="https://www.linkedin.com/in/drew-harshaw/" underline="none">
-          <Typography variant="body1" color={props.textColor}>Resume</Typography>
+        <Link href="/#resume" underline="none">
+          <Typography variant="body1" color={props.textColor}>
+            Resume
+          </Typography>
         </Link>
       </ListItem>
       <ListItem>
         <IconButton href="https://github.com/drewharshaw">
           <FontAwesomeIcon
             icon={faGithub}
-            color={props.textColor === 'primary' ? 'black' : 'white' }
+            color={props.textColor === "primary" ? "black" : "white"}
             className={"navIcon"}
           />
         </IconButton>
