@@ -32,6 +32,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Chip from "@material-ui/core/Chip";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
 const theme = createMuiTheme({
   typography: {
@@ -166,6 +168,7 @@ export default function App() {
             </Grid>
           </Grid>
 
+          <Divider className="section-break" />
           <Grid container spacing={3} direction="column" alignContent="center">
             <Grid item xs>
               <div className="anchor" id="resume"></div>
@@ -190,8 +193,8 @@ export default function App() {
               >
                 I am a responsible computer engineering student, who is
                 determined, time efficient and hardworking. My ability to listen
-                to others coupled with my open-mindedness allows for me to work
-                well with teams.
+                to others coupled with my open-mindedness allow me to work well
+                as part of a team.
               </Typography>
             </Grid>
           </Grid>
@@ -206,17 +209,39 @@ export default function App() {
             <Grid item xs>
               <Grid container spacing={8} direction="row">
                 <Grid item xs={4}>
-                  <img src={"images/queensLogo.svg"} className="resume-img" />
+                  <img
+                    src={"images/queensLogo.svg"}
+                    className="resume-queens-img"
+                  />
                 </Grid>
+
                 <Grid item xs={8}>
-                  <Typography variant="h5" color="textPrimary">
-                    Queen's University
-                  </Typography>
+                  <Grid container spacing={8}>
+                    <Grid item sm={9} xs={8}>
+                      <Typography
+                        variant="h5"
+                        color="textPrimary"
+                        className="institution"
+                      >
+                        Queen's University
+                      </Typography>
+                    </Grid>
+                    <Grid item sm={3} xs={4}>
+                      <Typography variant="subtitle1" color="textPrimary">
+                        Class of 2019
+                      </Typography>
+                    </Grid>
+                  </Grid>
                   <Typography variant="h6" color="textPrimary">
                     Bachelor of Applied Science in Computer Engineering
                   </Typography>
                   <Typography variant="body1" color="textPrimary">
-                    Stream specialization in Innovation and Entrepreneurship.
+                    <List>
+                      <ListItem>
+                        • Stream specialization in Innovation and
+                        Entrepreneurship.
+                      </ListItem>
+                    </List>
                   </Typography>
                 </Grid>
               </Grid>
@@ -236,22 +261,62 @@ export default function App() {
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h5" color="textPrimary">
-                    Ericsson
-                  </Typography>
-                  <Typography variant="h6" color="textPrimary">
-                    iOS & Web Developer Co-op
-                  </Typography>
+                  <Grid container spacing={8} alignItems="center">
+                    <Grid item sm={8} xs={8}>
+                      <Typography
+                        variant="h5"
+                        color="textPrimary"
+                        className="institution"
+                      >
+                        Ericsson
+                      </Typography>
+                    </Grid>
+                    <Grid item sm={4} xs={4}>
+                      <Typography
+                        variant="subtitle1"
+                        color="textPrimary"
+                        align="center"
+                      >
+                        Ottawa, Canada
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container alignItems="center">
+                    <Grid item sm={9} xs={8}>
+                      <Typography variant="h6" color="textPrimary">
+                        iOS & Web Developer Co-op
+                      </Typography>
+                    </Grid>
+                    <Grid item sm={3} xs={4}>
+                      <Typography variant="subtitle1" color="textPrimary">
+                        May 2018 - August 2019
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
                   <Typography variant="subtitle1" color="textPrimary">
-                    • Contributed to multiple product releases, implementing
-                    front-end features. Played an integral role in isolating and
-                    fixing bugs to meet production timelines. • Applied
-                    systematic analysis and design techniques to overhaul the
-                    design and implementation of the back-end database. •
-                    Developed and implemented the migration strategy using
-                    Python to transition user data from iOS to Web App. •
-                    Spearheaded front-end project settings redesign, creating a
-                    scalable architecture, reducing code size by 360 %.
+                    <List>
+                      <ListItem>
+                        • Contributed to multiple product releases, implementing
+                        front-end features and filled in as Scrum Master on
+                        several occasions. Played an integral role in isolating
+                        and fixing bugs to meet production timelines.
+                      </ListItem>
+                      <ListItem>
+                        • Applied systematic analysis and design techniques to
+                        overhaul the design and implementation of the
+                        applications back-end database. Developed and
+                        implemented the migration strategy to transition user
+                        data from iOS to Web App using Python.
+                      </ListItem>
+
+                      <ListItem>
+                        • Spearheaded front-end project settings redesign,
+                        creating a scalable architecture, reducing code size by
+                        360 %.
+                      </ListItem>
+                    </List>
                   </Typography>
                 </Grid>
               </Grid>
@@ -262,21 +327,55 @@ export default function App() {
                 <Grid item xs={4}>
                   <img
                     src={"images/walker-industries-logo.png"}
-                    className="resume-img2"
+                    className="resume-walker-img"
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h5" color="textPrimary">
-                    Walker Indsutries
-                  </Typography>
-                  <Typography variant="h6" color="textPrimary">
-                    Business Analyst Intern
-                  </Typography>
+                  <Grid container spacing={8} alignItems="center">
+                    <Grid item sm={8} xs={8}>
+                      <Typography
+                        variant="h5"
+                        color="textPrimary"
+                        className="institution"
+                      >
+                        Walker Indsutries
+                      </Typography>
+                    </Grid>
+                    <Grid item sm={4} xs={4}>
+                      <Typography
+                        variant="subtitle1"
+                        color="textPrimary"
+                        align="center"
+                      >
+                        Niagara Falls, Canada
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container alignItems="center">
+                    <Grid item sm={9} xs={8}>
+                      <Typography variant="h6" color="textPrimary">
+                        Business Analyst Intern
+                      </Typography>
+                    </Grid>
+                    <Grid item sm={3} xs={4}>
+                      <Typography variant="subtitle1" color="textPrimary">
+                        May 2017 - August 2017
+                      </Typography>
+                    </Grid>
+                  </Grid>
                   <Typography variant="subtitle1" color="textPrimary">
-                    • Developed custom business software to automate financial
-                    processes and improve the efficiency of business analytics.
-                    • Designed and developed software for managing employee
-                    timeseets and sales analytics.
+                    <List>
+                      <ListItem>
+                        • Developed custom business software to automate
+                        financial processes and improve the efficiency of
+                        business analytics.
+                      </ListItem>
+                      <ListItem>
+                        • Designed and developed software for managing employee
+                        timeseets and sales analytics.
+                      </ListItem>
+                    </List>
                   </Typography>
                 </Grid>
               </Grid>
@@ -289,9 +388,111 @@ export default function App() {
               <Divider />
             </Grid>
             <Grid item xs>
-              <Grid container spacing={8} direction="row">
-                <Grid item xs>
-                  <Chip size="small" label={""} className="chip" key={3} />
+              <Grid container spacing={8}>
+                <Grid item xs={4} sm={2}>
+                  <Typography variant="h5" color="textPrimary" align="left">
+                    Languages
+                  </Typography>
+                </Grid>
+                <Grid item xs={8} sm={10}>
+                  <Chip
+                    size="small"
+                    label={"TypeScript"}
+                    className="chip"
+                    key={1}
+                  />
+                  <Chip
+                    size="small"
+                    label={"JavaScript"}
+                    className="chip"
+                    key={2}
+                  />
+                  <Chip size="small" label={"HTML"} className="chip" key={3} />
+                  <Chip size="small" label={"SQL"} className="chip" key={4} />
+                  <Chip
+                    size="small"
+                    label={"Python"}
+                    className="chip"
+                    key={5}
+                  />
+                  <Chip size="small" label={"C/C++"} className="chip" key={6} />
+                  <Chip size="small" label={"Java"} className="chip" key={7} />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8}>
+                <Grid item xs={4} sm={2}>
+                  <Typography variant="h5" color="textPrimary" align="left">
+                    Libraries
+                  </Typography>
+                </Grid>
+                <Grid item xs={8} sm={10}>
+                  <Chip size="small" label={"React"} className="chip" key={8} />
+                  <Chip size="small" label={"Redux"} className="chip" key={9} />
+                  <Chip
+                    size="small"
+                    label={"OpenCV"}
+                    className="chip"
+                    key={10}
+                  />
+                  <Chip
+                    size="small"
+                    label={"OpenGL"}
+                    className="chip"
+                    key={11}
+                  />
+                  <Chip
+                    size="small"
+                    label={"TensorFlow"}
+                    className="chip"
+                    key={12}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8}>
+                <Grid item xs={4} sm={2}>
+                  <Typography variant="h5" color="textPrimary" align="left">
+                    Tools
+                  </Typography>
+                </Grid>
+                <Grid item xs={8} sm={10}>
+                  <Chip size="small" label={"Jira"} className="chip" key={13} />
+                  <Chip
+                    size="small"
+                    label={"Taiga"}
+                    className="chip"
+                    key={14}
+                  />
+                  <Chip size="small" label={"Git"} className="chip" key={15} />
+                  <Chip
+                    size="small"
+                    label={"BitBucket"}
+                    className="chip"
+                    key={16}
+                  />
+                  <Chip
+                    size="small"
+                    label={"VSCode"}
+                    className="chip"
+                    key={17}
+                  />
+                  <Chip
+                    size="small"
+                    label={"Visual Studio"}
+                    className="chip"
+                    key={18}
+                  />
+                  <Chip
+                    size="small"
+                    label={"Eclipse"}
+                    className="chip"
+                    key={19}
+                  />
+                  <Chip
+                    size="small"
+                    label={"SQL Server Management Studio"}
+                    className="chip"
+                    key={20}
+                  />
                 </Grid>
               </Grid>
             </Grid>

@@ -20,7 +20,7 @@
   margin: 10px;
   width: 64px !important;
   height: 64px !important;
-  background-color: rgb(34, 41, 72) !important;
+  background-color: rgb(166, 188, 230) !important;
 }
 
 .button {
@@ -288,20 +288,41 @@
   padding-left: 75px;
 }
 
-.resume-img {
-  width: 128px;
-  height: 128px;
+.section-break {
+  margin: 40px !important;
+}
+
+.resume-queens-img {
+  width: 124px;
+  height: 124px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
 
-.resume-img2 {
+.resume-img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.resume-walker-img {
+  width: 64px;
+  height: 64px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+}
+
+.institution {
+  font-weight: bold !important;
+  font-size: 28px !important;
+  font-family: Arial, Verdana !important;
 }
 
 .center {
