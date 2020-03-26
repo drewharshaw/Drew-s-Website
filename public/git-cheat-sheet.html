@@ -1,0 +1,418 @@
+
+    <html>
+      <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      </head>
+      <body>
+        <div id='content'>
+    <h1 id="git-cheat-sheet">Git Cheat Sheet</h1>
+<h2 id="terminology">Terminology</h2>
+<p><strong>HEAD</strong> - pointer to the last commit in the currently check-out branch (pointing to tip of branch)<br />
+<strong>origin</strong> - points to repository that was cloned (when forking, points to your fork on Github)<br />
+<strong>upstream</strong> - generally refers to original repo that was forked. See <code>git remote</code> for adding remotes<br />
+<strong>untracked files</strong> - are files that git doesn't know about or isn't tracking and can be added with <code>git add &lt;file&gt;</code><br />
+<strong>origin</strong> - pointer to remote repository URL that was cloned (when forking, points to your fork repo on Github)<br />
+<strong>work-tree</strong> - is the working directory of the user where local changes to files can be made<br />
+<strong>staging area (index)</strong> - where commits are prepared<br />
+<strong>~<n></strong> - tilde is used to denote a commit object that is nth generation ancestor eg. (master~2 = grandparent of HEAD).</p>
+<h2 id="common-commands">Common Commands</h2>
+<h4 id="adding">Adding</h4>
+<p><code>$ git add -A</code> <strong>Stage</strong> all changes<br />
+<code>$ git commit -m ""</code> <strong>Commit</strong> all files<br />
+<code>$ git commit -amend</code> <strong>Amend</strong> commit (replace with new commit)</p>
+<h4 id="undo">Undo</h4>
+<p><code>$ git reset &lt;file&gt;</code> <strong>Unstage</strong> a file (remove file from staging)<br />
+<code>$ git checkout -- &lt;file&gt;</code> <strong>Discard changes</strong> to a file in work-tree<br />
+<code>$ git reset --soft HEAD~1</code> <strong>Uncommit</strong> previous commit (moves HEAD to parent commit)<br />
+<code>$ git reset --hard HEAD</code> <strong>Reset</strong> everything <strong>use with caution</strong><br />
+<code>$ git revert HEAD~1</code> <strong>Revert</strong> all changes in HEAD~1 with new commit</p>
+<h4 id="branching">Branching</h4>
+<p><code>$ git branch -a</code> <strong>List</strong> local &amp; remote branches<br />
+<code>$ git branch &lt;new-branch&gt;</code> <strong>Create</strong> new branch<br />
+<code>$ git branch -d &lt;branch&gt;</code> <strong>Delete</strong> a local branch<br />
+<code>$ git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;</code> <strong>Create & Track</strong> &amp; checkout new branch<br />
+<code>$ git rebase master</code> <strong>Merge master changes</strong> with current checked-out branch<br />
+<code>$ git stash</code> <strong>Stashes</strong> work-tree &amp; staging<br />
+<code>$ git stash apply</code> <strong>Apply</strong> a stash without removing from stash list</p>
+<h4 id="history">History</h4>
+<p><code>$ git log</code> <strong>List</strong> all commits of checked-out branch, starting with HEAD<br />
+<code>$ git blame &lt;file&gt;</code> <strong>List changes</strong> made by who &amp; when in a file<br />
+<code>$ git bisect</code> Use binary search to find the commit that introduced a bug</p>
+<h2 id="general-index">General Index</h2>
+<h3 id="git-add">Git Add</h3>
+<p>Add files to staging area (index) from work-tree</p>
+<pre><code class="bash language-bash">$ git add -A // stages all changes
+$ git add .  // stages new files and modifications, without deletions
+$ git add -u // stages modifications and deletions, without new files
+</code></pre>
+<p>Undo adding files to staging by using <code>git reset</code></p>
+<pre><code class="bash language-bash">$ git reset &lt;file&gt; // remove specific file from staging area (index)
+$ git reset // remove all files from staging area (index)
+</code></pre>
+<h3 id="git-reset">Git Reset</h3>
+<p>Reset current HEAD to the specified state indicated by the commit &amp; flag. The default flag is <code>--mixed</code> and the default commit is HEAD.</p>
+<p><code>$ git reset --soft &lt;commit&gt;</code> Only resets HEAD to commit, keeps staging area &amp; work-tree unmodified<br />
+<code>$ git reset --mixed &lt;commit&gt;</code> Resets commit history &amp; staging area, pending staged changes are moved to work-tree<br />
+<code>$ git reset --hard &lt;commit&gt;</code> Resets commit history &amp; staging area &amp; work-tree to match specified commit</p>
+<p>Specific files can be reset using</p>
+<pre><code class="bash language-bash">$ git reset &lt;file&gt; // unstage file
+$ git reset // unstage all files
+</code></pre>
+<h3 id="git-revert">Git Revert</h3>
+<p>Makes a new commit that reverts the changes made by other commits.</p>
+<p>Example 1: Removing a single commit</p>
+<pre><code class="bash language-bash">git revert HEAD~3 //revert changes specified by 4th last commit in HEAD
+</code></pre>
+<p>Example 2: Removing a range of commits</p>
+<pre><code class="bash language-bash">git revert -n master~5..master~2 //revert changes done by commits 5th last - 3rd last (inclusive)
+</code></pre>
+<h3 id="git-fetch">Git Fetch</h3>
+<p>Download objects and refs from another repository.</p>
+<pre><code class="bash language-bash">$ git fetch origin // default fetchs the origin, unless theres a matching upstream branch
+</code></pre>
+<h3 id="git-merge">Git Merge</h3>
+<p>Join two or more development histories commits together into a single merge commit.</p>
+<pre><code class="bash language-bash">Example of merging new master changes into feature branch
+$ git checkout feature
+$ git merge origin/master
+</code></pre>
+<p>Abort a merge</p>
+<pre><code class="bash language-bash">$ git merge --abort
+</code></pre>
+<p>Continue a merge (used after resolving conflicts)</p>
+<pre><code class="bash language-bash">$ git merge --continue
+</code></pre>
+<h3 id="git-pull">Git Pull</h3>
+<p>Fetch from and integrate with another repository or a local branch. If no branch is explicitly specified, changes are pulled in from the tracked branch as set by <code>git branch --track</code>.</p>
+<p><strong>Format</strong><br />
+<code>$ git pull &lt;remote&gt;</code></p>
+<p><strong>Equivalencies</strong><br />
+<code>git pull</code> = <code>git fetch</code> + <code>git merge</code><br />
+<code>git pull --rebase</code> = <code>git fetch</code> + <code>git rebase</code></p>
+<pre><code class="bash language-bash">$ git pull // fetchs and merges tracking branch with current checked-out branch
+$ git pull --rebase // fetchs and rebases current checked-out branch with changes from tracked branch
+$ git pull --force // force the pull, use cautiously
+</code></pre>
+<p>To configure <code>git pull</code> to run a <code>git pull --rebase</code> every time, run the following</p>
+<pre><code class="bash language-bash">$ git config --global pull.rebase true
+</code></pre>
+<h3 id="git-push">Git Push</h3>
+<p>Update remote refs along with associated objects. Pushes commit to remote repository.</p>
+<p><strong>Format</strong><br />
+<code>$ git push &lt;remote&gt; &lt;branch&gt;</code></p>
+<h3 id="git-commit">Git Commit</h3>
+<p>Create a new commit containing the current content of staging with message describing changes.</p>
+<p>Create new commit from staging, updating HEAD.<br />
+<code>$ git commit -m ""</code></p>
+<p>Replaces previous commit that with new commit.<br />
+<code>$ git commit -amend</code></p>
+<p>Add all tracked modified files to staging &amp; commit them <strong>use with caution</strong><br />
+<code>$ git commit -am ""</code></p>
+<h3 id="git-rebase">Git Rebase</h3>
+<p>A form of merging that re-writes the project history by creating new commits for each commit in the origin branch. The major benefit of rebasing is a cleaner linear project history, removing unnecessary merge commits. The trade-offs are safety and traceability (content of merge commit - can't see when upstream changes were incorporated into the feature).</p>
+<h4 id="normal-rebasing">Normal Rebasing</h4>
+<p>Moves entire feature branch to begin on tip of master branch, creating brand new commits for each commit in the original branch.</p>
+<p><strong>Never</strong> use <code>git rebase</code> on public branches (shared feature branches). <a href="https://git-scm.com/docs/git-rebase"><em>Upstream Rebase</em></a> can cause additional complications for developers dependent on the public branch that was rebased.</p>
+<pre><code class="bash language-bash">$ git checkout feature
+$ git rebase master
+</code></pre>
+<p>Abort a rebase</p>
+<pre><code class="bash language-bash">$ git rebase --abort
+</code></pre>
+<p>Continue a rebase (used after resolving conflicts)</p>
+<pre><code class="bash language-bash">$ git rebase --continue
+</code></pre>
+<h4 id="interactive-rebasing">Interactive Rebasing</h4>
+<p>Allows for the alteration of commits as they are moved to the new branch. Allowing for complete control over the branch's commit history. Most commonly used to clean up messy history before merging a feature branch into master (before PRs).</p>
+<pre><code class="bash language-bash">$ git checkout feature
+$ git rebase -i &lt;commit&gt;
+</code></pre>
+<p>An editor will appear with all the commits in your branch (ignoring merge commits), which come after the provided commit. Here commits can be reorderd, edited, removed, and squashed together. This is done by replacing <code>pick</code> with the desired operation <code>edit</code>, <code>drop</code>, <code>squash</code>. For <code>squash</code> replace "pick" for the second and subsequent commits, that will be squashed into the first commit above <code>squash</code>.</p>
+<h3 id="git-checkout">Git Checkout</h3>
+<p>Switch branches or restore working tree files by updating HEAD.</p>
+<p>Switching Branches</p>
+<pre><code class="bash language-bash">$ git checkout -b &lt;branch&gt; // create &amp; checkout local branch
+$ git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt; //create &amp; checkout &amp; add tracking informaiton to branch
+</code></pre>
+<p>Restoring working tree (discarding local changes in specific file)</p>
+<pre><code class="bash language-bash">$ git chechout HEAD &lt;file&gt;
+</code></pre>
+<h3 id="git-branch">Git Branch</h3>
+<p>List, create, delete or update tracking info of branches</p>
+<p><code>$ git branch -a</code> <strong>List</strong> local &amp; remote branches<br />
+<code>$ git branch &lt;new-branch&gt;</code> <strong>Create</strong> new branch<br />
+<code>$ git branch -d &lt;branch&gt;</code> <strong>Delete</strong> a local branch<br />
+<code>$ git branch -u origin/branch</code> <strong>update tracking info</strong> of current branch to track origin/branch (set upstream tracking)</p>
+<h3 id="git-stash">Git Stash</h3>
+<p>Stash the changes in a work-tree and staging</p>
+<p><code>$ git stash</code> equivalent to <code>$ git stash push</code> <strong>Stashes</strong> work-tree &amp; staging<br />
+<code>$ git stash apply</code> <strong>Apply</strong> a stash without removing from stash list</p>
+<h3 id="git-remote">Git Remote</h3>
+<p>Manage set of tracked repositories</p>
+<p>To view all tracked repositories<br />
+<code>$ git remote -v</code></p>
+<p>To add a remote repository<br />
+<code>$ git remote add &lt;nameOfPointer&gt; git://github.com/&lt;aUser&gt;/&lt;aRepo.git&gt;</code></p>
+<h3 id="git-log">Git Log</h3>
+<p><code>$ git log</code> show commit logs<br />
+<code>$ git log --all</code> display all commits (regardless of the current checked-out branch)<br />
+<code>$ git log --stat</code> view summary of changes made in each commit<br />
+<code>$ git log --graph</code> view ascii art graphical representation<br />
+<code>$ git log --pretty=format:"Commit Hash: %H, Author: %aN, Date: %aD"</code> modify format of output</p>
+<h3 id="git-bisect">Git Bisect</h3>
+<p>Use binary search to find the commit that introduced a bug</p>
+<p>Example: Find the commit that broke the feature.</p>
+<pre><code class="bash language-bash">$ git bisect start
+$ git bisect bad // current commit still has the bug
+$ git bisect good &lt;commit&gt; // informing bisect that this commit does not have the bug
+</code></pre>
+<p>Git bisect will select a commit in the middle, check it out and you must test and inform it whether its a good or bad commit with <code>git bisect bad</code> or <code>git bisect good</code>.</p>
+<p>After a bisect session, clean up the bisection state &amp; return to original HEAD with the following command.</p>
+<pre><code class="bash language-bash">$ git bisect reset // returning you to the state before running git bisect start
+</code></pre>
+<h3 id="git-cherry-pick">Git Cherry Pick</h3>
+<p>Apply the changes introduced by some existing commit and append them to current working HEAD.</p>
+<p>This requires your working tree to be clean (no modifications to HEAD).</p>
+<p><code>$ git cherry-pick &lt;commit&gt;</code> will append the commit to the tip of the current checked-out branch</p>
+<h2 id="advanced">Advanced</h2>
+<h3 id="untracked-file">Untracked File</h3>
+<p>Removes file from repository but keeps it in working directory</p>
+<pre><code class="bash language-bash">$ git rm --cached &lt;file&gt;
+</code></pre>
+<h3 id="detached-head">Detached HEAD</h3>
+<p>A state which occurs when HEAD refers to a specific commit, as opposed to referring to a named branch.</p>
+<p>Example</p>
+<pre><code class="bash language-bash">$ git checkout master^^
+
+   HEAD (refers to commit 'b')
+    |
+    v
+a---b---c---d  branch 'master' (refers to commit 'd')
+</code></pre>
+<p>If we make a commit here</p>
+<pre><code class="bash language-bash">$ edit; git add; git commit
+
+     HEAD (refers to commit 'e')
+      |
+      v
+      e
+     /
+a---b---c---d  branch 'master' (refers to commit 'd')
+</code></pre>
+<p>Then move to master, nothing will refer to commit <code>e</code> at which point it is considered an Orphaned Commit.</p>
+<pre><code class="bash language-bash">$ git checkout master
+
+               HEAD (refers to branch 'master')
+      e         |
+     /          v
+a---b---c---d  branch 'master' (refers to commit 'd')
+</code></pre>
+<p>Commit <code>e</code> will eventually get deleted by Git garbage collection and be deleted. If still checked-out to <code>e</code>, we can<br />
+use the following command to create a reference.</p>
+<p><code>$ git checkout -b foo</code> This creates new branch <code>foo</code>, which refers to commit <code>f</code> &amp; updated HEAD to point to branch foo.</p>
+<p>If we have moved away from commit <code>f</code>, we must first recover its object name, used the following command to do so.<br />
+<code>$ git reflog -2 HEAD</code></p>
+<p>Then we can use the object name to create a reference as seen above.</p>
+<h3 id="orphaned-commits">Orphaned Commits</h3>
+<p>Are commits that have no direct path from a ref to access them, usually caused by improper use of git reset.<br />
+They can be usually found and restored using</p>
+<pre><code class="bash language-bash">$ git reflog
+</code></pre>
+<p>Note: Git will permanently delete any orphaned commits when runnning internal garbage collector which is run every 30 days.</p>
+<h3 id="adding-shortcuts">Adding shortcuts</h3>
+<pre><code class="bash language-bash">$ git config --global alias.&lt;NAME_OF_COMMAND&gt; '&lt;actual command&gt;'
+</code></pre>
+<h3 id="local-hooks">Local Hooks</h3>
+<p>Local hooks only affect the local repository in which they reside. They can be run in any scripting language, so long<br />
+as they are prefaced with the shebang line #! eg. for python (#!/usr/bin/env python).</p>
+<p>Atlassian has a good <a href="https://www.atlassian.com/git/tutorials/git-hooks">article</a> breaking down common git hooks.</p>
+
+        </div>
+        <style type='text/css'>body {
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+
+  body > #content {
+    padding: 0px 20px 20px 20px !important;
+  }
+}
+
+body > #content {
+  margin: 0px;
+  max-width: 900px;
+  border: 1px solid #e1e4e8;
+  padding: 10px 40px;
+  padding-bottom: 20px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  color: #bbb;
+  background-color: #bbb;
+  height: 1px;
+  flex: 0 1 auto;
+  margin: 1em 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+ * Links
+ */
+a {
+  color: #0366d6;
+  text-decoration: none; }
+  a:visited {
+    color: #0366d6; }
+  a:hover {
+    color: #0366d6;
+    text-decoration: underline; }
+
+pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+/**
+  * Code blocks
+  */
+
+code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  word-wrap: break-word;
+  padding: .2em .4em;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+pre > code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+  font-size: 100%;
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  border-left-width: 3px;
+  padding: 0 1em;
+  color: #828282;
+  border-left: 4px solid #e8e8e8;
+  padding-left: 15px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  font-style: italic;
+}
+blockquote * {
+  font-style: normal !important;
+  letter-spacing: 0;
+  color: #6a737d !important;
+}
+
+/**
+ * Tables
+ */
+table {
+  border-spacing: 2px;
+  display: block;
+  font-size: 14px;
+  overflow: auto;
+  width: 100%;
+  margin-bottom: 16px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/**
+ * Others
+ */
+
+img {
+  max-width: 100%;
+}
+
+p {
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #24292e; }
+
+ul {
+  margin-top: 0; }
+
+li {
+  color: #24292e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5; }
+
+li + li {
+  margin-top: 0.25em; }
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #24292e; }
+
+a:visited {
+  color: #0366d6; }
+
+h1, h2, h3 {
+  border-bottom: 1px solid #eaecef;
+  color: #111;
+  /* Darker */ }</style>
+      </body>
+    </html>

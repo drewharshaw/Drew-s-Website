@@ -25,6 +25,12 @@ export default function Footer(props) {
           Material-UI.
         </Link>
       </Container>
+
+      <Container className={"footer-notes-container"}>
+        <Link color="inherit" href="/git-cheat-sheet.html">
+          Git Cheat Sheet
+        </Link>
+      </Container>
     </Typography>
   );
 }

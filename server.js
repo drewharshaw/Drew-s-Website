@@ -54,6 +54,10 @@ app.get("/images/favicon.ico", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "images", "favicon.ico"));
 });
 
+app.get("/git-cheat-sheet.html", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "git-cheat-sheet.html"));
+});
+
 let compiler = webpack(webpackConfig);
 app.use(
   require("webpack-dev-middleware")(compiler, {
