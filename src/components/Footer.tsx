@@ -1,20 +1,39 @@
 import * as React from "react";
+
+// material ui libs
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
-import "../styles/style.css";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  footer: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "30px",
+    backgroundColor: "rgb(34, 34, 34)",
+    color: "white !important" /* TODO: modify theme instead*/,
+  },
+  footerContainer: {
+    paddingTop: "40px",
+    paddingBottom: "20px",
+  },
+  footerNotesContainer: {
+    textAlign: "right",
+  },
+}));
 
 export default function Footer(props) {
+  const classes = useStyles();
   return (
     <Typography
+      className={classes.footer}
       variant="body2"
       color="textSecondary"
       align="center"
       component="footer"
-      className={"footer"}
     >
-      <Container className={"footer-container"}>
+      <Container className={classes.footerContainer}>
         {"Copyright © "}
         <Link color="inherit" href="https://drewharshaw.com/">
           drewharshaw
@@ -26,7 +45,7 @@ export default function Footer(props) {
         </Link>
       </Container>
 
-      <Container className={"footer-notes-container"}>
+      <Container className={classes.footerNotesContainer}>
         <Link color="inherit" href="/git-cheat-sheet.html">
           Git Cheat Sheet
         </Link>

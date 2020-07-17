@@ -1,4 +1,19 @@
 import * as React from "react";
+
+// material ui libs
+import Container from "@material-ui/core/Container";
+import ReactCanvasNest from "react-canvas-nest";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+
+// custom components
 import Header from "./Header";
 import Footer from "./Footer";
 import ProjectCard from "./ProjectCard";
@@ -11,7 +26,7 @@ import {
   AlexRuffo,
   VishalKamath,
   MichaelLang,
-  TeddKourkounakis
+  TeddKourkounakis,
 } from "../utils/teamMembers";
 
 import {
@@ -20,20 +35,8 @@ import {
   python,
   ardunio,
   leapJS,
-  expressJS
+  expressJS,
 } from "../utils/technologies";
-import Container from "@material-ui/core/Container";
-import ReactCanvasNest from "react-canvas-nest";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
-import SvgIcon from "@material-ui/core/SvgIcon";
-import Chip from "@material-ui/core/Chip";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 
 const theme = createMuiTheme({
   typography: {
@@ -48,53 +51,136 @@ const theme = createMuiTheme({
       "sans-serif",
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ].join(",")
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
   palette: {
     primary: {
-      main: "#000000"
+      main: "#000000", //black
     },
     secondary: {
-      main: "#ffffff"
-    }
-  }
+      main: "#ffffff", //white
+    },
+  },
 });
 
+const useStyles = makeStyles((theme) => ({
+  nestWrapper: {
+    width: "100%",
+    height: "800px",
+    backgroundColor: "rgb(34, 34, 34)",
+  },
+  anchor: {
+    display: "block",
+    position: "relative",
+    top: "-250px",
+    visibility: "hidden",
+  },
+  backdrop: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgb(34, 34, 34)",
+  },
+  mainContainer: {
+    padding: "32px 32px 32px 32px",
+    background: "#ffffff",
+    position: "relative",
+    zIndex: 3,
+    borderRadius: "6px",
+    boxShadow:
+      "0 16px 24px 2px rgba(0, 0, 0, 0.14),0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
+  },
+  gridD: {
+    "& div": {
+      flexGrow: 0,
+    },
+  },
+  sectionBreak: {
+    margin: "40px !important",
+  },
+  silhouette: {
+    margin: "10px",
+    width: "128px !important",
+    height: "128px !important",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  quote: {
+    fontStyle: "italic",
+    paddingRight: "75px",
+    paddingLeft: "75px",
+  },
+  resumeQueensImg: {
+    width: "50%",
+    height: "124px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  institution: {
+    fontWeight: 600,
+    fontSize: 28,
+    fontFamily: "Arial, Verdana !important",
+  },
+  resumeImg: {
+    width: "50%",
+    height: "100px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  resumeWalkerImg: {
+    width: "275px",
+    height: "78px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  chip: {
+    margin: "5px",
+  },
+}));
+
 export default function App() {
+  const classes = useStyles();
+
   return (
-    // pass theme down the React component tree, use const theme = useTheme(); to access theme
     <MuiThemeProvider theme={theme}>
       <Header
-        color="transparent"
         fixed={true}
         changeColorOnScroll={{
           height: 400,
-          color: "white"
+          color: "white",
         }}
       />
 
-      <div className={"nest-wrapper"}>
+      <div className={classes.nestWrapper}>
         <ReactCanvasNest
           className="canvasNest"
           config={{
             pointColor: "255, 255, 255",
             lineColor: "255, 255, 255",
             count: 100,
-            mouseDist: 50000
+            mouseDist: 50000,
           }}
           style={{ zIndex: 0, opacity: "0.7" }}
         />
       </div>
 
-      <div className="anchor" id="projects"></div>
-      <div className={"backdrop"}>
-        <Container className={"main-container"}>
+      <div className={classes.anchor} id="projects" />
+      <div className={classes.backdrop}>
+        <Container className={classes.mainContainer}>
           <Typography variant="h3" color="textPrimary" align="center">
             Projects
           </Typography>
 
-          <Grid container spacing={3} justify="center" className="gridD">
+          <Grid
+            container
+            spacing={3}
+            justify="center"
+            className={classes.gridD}
+          >
             <Grid item xs>
               <ProjectCard
                 title="AutoConnect"
@@ -105,7 +191,7 @@ export default function App() {
                     preventing accidents for traditionally unforeseeable hazards."
                 date="September 2019 - Present"
                 img_src={"images/auto_car.jpg"}
-                techStack={[react, nodeJS, python]}
+                techStack={[expressJS, nodeJS, python]}
                 teamMembers={[JohnBowden, SudhirPokhrel, DrewHarshaw]}
               />
             </Grid>
@@ -136,7 +222,7 @@ export default function App() {
                   TeddKourkounakis,
                   AlexRuffo,
                   VishalKamath,
-                  DrewHarshaw
+                  DrewHarshaw,
                 ]}
               />
             </Grid>
@@ -168,10 +254,10 @@ export default function App() {
             </Grid>
           </Grid>
 
-          <Divider className="section-break" />
+          <Divider className={classes.sectionBreak} />
           <Grid container spacing={3} direction="column" alignContent="center">
             <Grid item xs>
-              <div className="anchor" id="resume"></div>
+              <div className={classes.anchor} id="resume" />
               <Typography variant="h3" color="textPrimary" align="center">
                 Resume
               </Typography>
@@ -180,7 +266,7 @@ export default function App() {
               <Avatar
                 alt="Drew Harshaw"
                 src="/images/profile.png"
-                className="silhouette"
+                className={classes.silhouette}
               />
             </Grid>
 
@@ -189,7 +275,7 @@ export default function App() {
                 variant="body1"
                 color="textPrimary"
                 align="center"
-                className="quote"
+                className={classes.quote}
               >
                 I am a responsible computer engineering student, who is
                 determined, time efficient and hardworking. My ability to listen
@@ -210,8 +296,9 @@ export default function App() {
               <Grid container spacing={8} direction="row">
                 <Grid item xs={4}>
                   <img
+                    alt={"Queen's University Logo"}
                     src={"images/queensLogo.svg"}
-                    className="resume-queens-img"
+                    className={classes.resumeQueensImg}
                   />
                 </Grid>
 
@@ -221,7 +308,7 @@ export default function App() {
                       <Typography
                         variant="h5"
                         color="textPrimary"
-                        className="institution"
+                        className={classes.institution}
                       >
                         Queen's University
                       </Typography>
@@ -235,14 +322,15 @@ export default function App() {
                   <Typography variant="h6" color="textPrimary">
                     Bachelor of Applied Science in Computer Engineering
                   </Typography>
-                  <Typography variant="body1" color="textPrimary">
-                    <List>
-                      <ListItem>
+
+                  <List>
+                    <ListItem>
+                      <Typography variant="body1" color="textPrimary">
                         • Stream specialization in Innovation and
                         Entrepreneurship.
-                      </ListItem>
-                    </List>
-                  </Typography>
+                      </Typography>
+                    </ListItem>
+                  </List>
                 </Grid>
               </Grid>
             </Grid>
@@ -256,8 +344,9 @@ export default function App() {
               <Grid container spacing={8} direction="row" alignItems="center">
                 <Grid item xs={4}>
                   <img
+                    alt={"Ericsson Company Logo"}
                     src={"images/ericsson-icon.svg"}
-                    className="resume-img"
+                    className={classes.resumeImg}
                   />
                 </Grid>
                 <Grid item xs={8}>
@@ -266,7 +355,7 @@ export default function App() {
                       <Typography
                         variant="h5"
                         color="textPrimary"
-                        className="institution"
+                        className={classes.institution}
                       >
                         Ericsson
                       </Typography>
@@ -326,8 +415,9 @@ export default function App() {
               <Grid container spacing={8} direction="row" alignItems="center">
                 <Grid item xs={4}>
                   <img
+                    alt={"Walker Industries Company Logo"}
                     src={"images/walker-industries-logo.png"}
-                    className="resume-walker-img"
+                    className={classes.resumeWalkerImg}
                   />
                 </Grid>
                 <Grid item xs={8}>
@@ -336,7 +426,7 @@ export default function App() {
                       <Typography
                         variant="h5"
                         color="textPrimary"
-                        className="institution"
+                        className={classes.institution}
                       >
                         Walker Indsutries
                       </Typography>
@@ -396,27 +486,47 @@ export default function App() {
                 </Grid>
                 <Grid item xs={8} sm={10}>
                   <Chip
+                    className={classes.chip}
                     size="small"
                     label={"TypeScript"}
-                    className="chip"
                     key={1}
                   />
                   <Chip
                     size="small"
                     label={"JavaScript"}
-                    className="chip"
+                    className={classes.chip}
                     key={2}
                   />
-                  <Chip size="small" label={"HTML"} className="chip" key={3} />
-                  <Chip size="small" label={"SQL"} className="chip" key={4} />
+                  <Chip
+                    size="small"
+                    label={"HTML"}
+                    className={classes.chip}
+                    key={3}
+                  />
+                  <Chip
+                    size="small"
+                    label={"SQL"}
+                    className={classes.chip}
+                    key={4}
+                  />
                   <Chip
                     size="small"
                     label={"Python"}
-                    className="chip"
+                    className={classes.chip}
                     key={5}
                   />
-                  <Chip size="small" label={"C/C++"} className="chip" key={6} />
-                  <Chip size="small" label={"Java"} className="chip" key={7} />
+                  <Chip
+                    size="small"
+                    label={"C/C++"}
+                    className={classes.chip}
+                    key={6}
+                  />
+                  <Chip
+                    size="small"
+                    label={"Java"}
+                    className={classes.chip}
+                    key={7}
+                  />
                 </Grid>
               </Grid>
               <Grid container spacing={8}>
@@ -426,24 +536,34 @@ export default function App() {
                   </Typography>
                 </Grid>
                 <Grid item xs={8} sm={10}>
-                  <Chip size="small" label={"React"} className="chip" key={8} />
-                  <Chip size="small" label={"Redux"} className="chip" key={9} />
+                  <Chip
+                    size="small"
+                    label={"React"}
+                    className={classes.chip}
+                    key={8}
+                  />
+                  <Chip
+                    size="small"
+                    label={"Redux"}
+                    className={classes.chip}
+                    key={9}
+                  />
                   <Chip
                     size="small"
                     label={"OpenCV"}
-                    className="chip"
+                    className={classes.chip}
                     key={10}
                   />
                   <Chip
                     size="small"
                     label={"OpenGL"}
-                    className="chip"
+                    className={classes.chip}
                     key={11}
                   />
                   <Chip
                     size="small"
                     label={"TensorFlow"}
-                    className="chip"
+                    className={classes.chip}
                     key={12}
                   />
                 </Grid>
@@ -455,42 +575,52 @@ export default function App() {
                   </Typography>
                 </Grid>
                 <Grid item xs={8} sm={10}>
-                  <Chip size="small" label={"Jira"} className="chip" key={13} />
                   <Chip
                     size="small"
-                    label={"Taiga"}
-                    className="chip"
+                    label={"Jira"}
+                    className={classes.chip}
+                    key={13}
+                  />
+                  <Chip
+                    size="small"
+                    label={"Firebase"}
+                    className={classes.chip}
                     key={14}
                   />
-                  <Chip size="small" label={"Git"} className="chip" key={15} />
+                  <Chip
+                    size="small"
+                    label={"Git"}
+                    className={classes.chip}
+                    key={15}
+                  />
                   <Chip
                     size="small"
                     label={"BitBucket"}
-                    className="chip"
+                    className={classes.chip}
                     key={16}
                   />
                   <Chip
                     size="small"
                     label={"VSCode"}
-                    className="chip"
+                    className={classes.chip}
                     key={17}
                   />
                   <Chip
                     size="small"
                     label={"Visual Studio"}
-                    className="chip"
+                    className={classes.chip}
                     key={18}
                   />
                   <Chip
                     size="small"
                     label={"Eclipse"}
-                    className="chip"
+                    className={classes.chip}
                     key={19}
                   />
                   <Chip
                     size="small"
                     label={"SQL Server Management Studio"}
-                    className="chip"
+                    className={classes.chip}
                     key={20}
                   />
                 </Grid>

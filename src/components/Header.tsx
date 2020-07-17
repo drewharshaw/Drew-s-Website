@@ -1,42 +1,18 @@
-import {
-  withStyles,
-  createStyles,
-  makeStyles,
-  Theme
-} from "@material-ui/core/styles";
-import "../styles/style.css";
+import * as React from "react";
+
+// material ui libs
 import NavBar from "./NavBar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
-
-import * as React from "react";
-
-import { useState } from "react";
-
-import classNames from "classnames";
-
-// @material-ui/core components
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import Hidden from "@material-ui/core/Hidden";
-import Drawer from "@material-ui/core/Drawer";
-import SvgIcon, { SvgIconProps } from "@material-ui/core/SvgIcon";
-import Menu from "@material-ui/core/Menu";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-// TODO: add proper SVG path
-function HomeLogo(props: SvgIconProps) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
+import { makeStyles } from "@material-ui/core/styles";
+
+// classnames libs
+import classNames from "classnames";
 
 export type colorType = "primary" | "secondary";
 
@@ -55,26 +31,79 @@ type changeColorOnScroll = {
 };
 
 interface IHeaderProps {
-  color?:
-    | "primary"
-    | "info"
-    | "success"
-    | "warning"
-    | "danger"
-    | "transparent"
-    | "white"
-    | "rose"
-    | "dark";
-  brand?: string;
   fixed?: boolean;
-  absolute?: boolean;
   changeColorOnScroll?: changeColorOnScroll;
 }
 
-export default function Header(props: IHeaderProps) {
-  const [colorText, setState] = useState<colorType>("secondary");
+const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: "40px",
+    flex: "1",
+    alignItems: "center",
+    justifyContent: "space-between",
+    display: "flex",
+    flexWrap: "nowrap",
 
-  // using hooks to implement componentDidMount() and componentWillUnmount()
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    marginRight: "auto",
+    marginLeft: "auto",
+    width: "100%",
+
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "540px",
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "960px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      maxWidth: "1140px",
+    },
+  },
+  profile: {
+    display: "flex",
+    flexDirection: "row",
+    fontFamily:
+      "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,sans-serif",
+    textTransform: "none",
+    whiteSpace: "nowrap",
+  },
+  avatar: {
+    margin: "10px",
+    width: "64px !important",
+    height: "64px !important",
+    backgroundColor: "rgb(166, 188, 230) !important",
+  },
+  appBar: {
+    display: "flex",
+    border: "0",
+    borderRadius: "3px",
+    marginBottom: "20px",
+    color: "#555",
+    alignItems: "center",
+    flexFlow: "row nowrap",
+    justifyContent: "flex-start",
+    position: "relative",
+    zIndex: "unset",
+  },
+  transparent: {
+    background: "transparent !important",
+    boxShadow: "none !important",
+    paddingTop: "25px",
+  },
+  white: {
+    background: "#fff !important",
+  },
+  fixed: {
+    position: "fixed",
+    zIndex: 1100,
+  },
+}));
+
+export default function Header(props: IHeaderProps) {
+  const classes = useStyles();
+  const [colorText, setColour] = React.useState<colorType>("secondary");
+
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
@@ -87,47 +116,34 @@ export default function Header(props: IHeaderProps) {
   });
 
   const headerColorChange = () => {
-    const { color, changeColorOnScroll } = props;
+    const { changeColorOnScroll } = props;
     const windowsScrollTop = window.pageYOffset;
 
     if (windowsScrollTop > changeColorOnScroll.height) {
       // turns white
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.remove(`${color}`);
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.add(`${changeColorOnScroll.color}`);
-
-      setState("primary");
+      setColour("primary");
     } else {
-      // turns translucent
-      document.body.getElementsByTagName("header")[0].classList.add(`${color}`);
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.remove(`${changeColorOnScroll.color}`);
-
-      setState("secondary");
+      setColour("secondary");
     }
   };
 
-  const { color, brand, fixed, absolute } = props;
+  const { fixed } = props;
   const appBarClasses = classNames({
-    appBar: true,
-    [color]: color,
-    absolute: absolute,
-    fixed: fixed
+    [classes.appBar]: true,
+    [classes.fixed]: fixed,
+    [classes.white]: colorText == "primary",
+    [classes.transparent]: colorText == "secondary",
   });
 
   return (
     <AppBar className={appBarClasses}>
-      <Toolbar className={"container"}>
-        <List disablePadding className="profile">
+      <Toolbar className={classes.container}>
+        <List disablePadding className={classes.profile}>
           <ListItem dense>
             <Avatar
               alt="Drew Harshaw"
               src="/images/profile.png"
-              className="avatar"
+              className={classes.avatar}
             />
           </ListItem>
           <ListItem dense>
