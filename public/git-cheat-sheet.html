@@ -44,7 +44,7 @@
 <p>Add files to staging area (index) from work-tree</p>
 <pre><code class="bash language-bash">$ git add -A // stages all changes
 $ git add .  // stages new files and modifications, without deletions
-$ git add -u // stages modifications and deletions, without new files
+$ git add -u // stages **tracked changes only** (modifications and deletions, without new files)
 </code></pre>
 <p>Undo adding files to staging by using <code>git reset</code></p>
 <pre><code class="bash language-bash">$ git reset &lt;file&gt; // remove specific file from staging area (index)
@@ -227,6 +227,17 @@ They can be usually found and restored using</p>
 <p>Local hooks only affect the local repository in which they reside. They can be run in any scripting language, so long<br />
 as they are prefaced with the shebang line #! eg. for python (#!/usr/bin/env python).</p>
 <p>Atlassian has a good <a href="https://www.atlassian.com/git/tutorials/git-hooks">article</a> breaking down common git hooks.</p>
+<h3 id="remove-commits-with-sensitive-data">Remove commits with sensitive data</h3>
+<p>If sensitive information is accidentally commited <code>git filter-branch</code> can be used to remove the file(s) from your git history.</p>
+<p>Note: The sensitive data may still be accessible in any clones or forks of your repo via their SHA-1 hashes in cached views on GitHub, and through any pull requests that reference them.</p>
+<p>Additional Note: Before using the <code>git filter-branch</code> command, make sure you don't have any important stashes as you won't be able to retrieve your changes with other stash commands.</p>
+<p>Run the following command, replacing <code>PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA</code> with the path to the file you want to remove. Note: If the file with sensitive data used to exist at any other paths (because it was moved or renamed), you must run this command on those paths, as well.</p>
+<pre><code class="bash language-bash">$ git filter-branch --force --index-filter "git rm --cached --ignore-unmatch PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA" --prune-empty --tag-name-filter cat -- --all
+</code></pre>
+<p>Add the file to your .gitignore and force push your local changes to overwrite your GitHub repo.</p>
+<pre><code class="bash language-bash">$ git push origin --force --all
+</code></pre>
+<p>For more info see <a href="https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository">article</a></p>
 
         </div>
         <style type='text/css'>body {
