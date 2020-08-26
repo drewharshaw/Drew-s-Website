@@ -55,7 +55,10 @@ module.exports = (env, argv) => {
         template: path.resolve(__dirname, "public", "index.html"),
       }),
       new CopyWebpackPlugin({
-        patterns: [{ from: "public/images", to: "images" }],
+        patterns: [
+          { from: "public/images", to: "images" },
+          { from: "public/git-cheat-sheet.html", to: "" },
+        ],
       }),
       new webpack.HotModuleReplacementPlugin(),
     ],
