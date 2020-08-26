@@ -189,7 +189,7 @@ export default function App() {
                     the overall awareness/visibility of hazardous objects on the roads. In cases were vehicle sensors 
                     are limited due to obstructions, AutoConnect will facilitate the transfer of critical information, 
                     preventing accidents for traditionally unforeseeable hazards."
-                date="September 2019 - Present"
+                date="September 2019 - April 2019"
                 img_src={"images/auto_car.jpg"}
                 techStack={[expressJS, nodeJS, python]}
                 teamMembers={[JohnBowden, SudhirPokhrel, DrewHarshaw]}
