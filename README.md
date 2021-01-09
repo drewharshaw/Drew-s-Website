@@ -9,8 +9,9 @@ $ npm install
 ```
 
 ```bash
-# build 
-$ npm run build
-
 # development
-$ npm run start
+$ npm run dev
+
+# production
+$ npm run prod
+```
