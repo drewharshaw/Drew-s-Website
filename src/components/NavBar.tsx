@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // fontawesome libs
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 // custom components
 import { colorType } from "./Header";
@@ -18,22 +18,6 @@ import { colorType } from "./Header";
 interface INavbarProps {
   textColor: colorType;
 }
-
-const useStyles = makeStyles((theme) => ({
-  navbar: {
-    display: "flex",
-    flexDirection: "row",
-    padding: "0",
-    fontFamily:
-      "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,sans-serif",
-    textTransform: "none",
-  },
-  navIcon: {
-    position: "relative",
-    fontSize: "20px !important",
-    marginRight: "4px",
-  },
-}));
 
 export default function NavBar(props: INavbarProps) {
   const classes = useStyles();
@@ -62,6 +46,29 @@ export default function NavBar(props: INavbarProps) {
           />
         </IconButton>
       </ListItem>
+      <ListItem>
+        <IconButton href="https://www.linkedin.com/in/drew-harshaw/">
+        <FontAwesomeIcon
+            icon={faLinkedin}
+            color={props.textColor === "primary" ? "black" : "white"}
+            className={classes.navIcon}
+          />
+        </IconButton>
+      </ListItem>
     </List>
   );
 }
+
+const useStyles = makeStyles((theme) => ({
+  navbar: {
+    display: "flex",
+    flexDirection: "row",
+    padding: "0",
+    fontFamily:
+      "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,sans-serif",
+    textTransform: "none",
+  },
+  navIcon: {
+    position: "relative",
+  },
+}));

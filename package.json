@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "npm run build-dev && webpack-dev-server",
+    "prod": "npm run build-prod && webpack-dev-server",
     "build-dev": "./node_modules/.bin/webpack --mode development",
     "build-prod": "./node_modules/.bin/webpack --mode production",
     "deploy": "npm run build-prod && aws s3 sync dist/ s3://drewharshaw.com"
@@ -30,6 +31,7 @@
     "@types/classnames": "^2.2.10",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.31",
+    "@types/regenerator-runtime": "^0.13.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "clsx": "^1.1.0",
@@ -38,9 +40,11 @@
     "react": "^16.13.1",
     "react-canvas-nest": "^1.0.10",
     "react-dom": "^16.13.1",
+    "regenerator-runtime": "^0.13.7",
     "spectre.css": "^0.5.8"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-react": "^7.9.4",
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
