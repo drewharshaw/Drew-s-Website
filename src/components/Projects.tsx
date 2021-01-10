@@ -22,6 +22,7 @@ import {
   NodeJS,
   LeapJS,
   Arduino,
+  TensorFlow,
 } from "../utils/techIcons";
 
 import {
@@ -56,24 +57,24 @@ export default function Projects() {
         description=" Sidekick is a software platform connecting primary caregivers of
         children with autism, with professional respite care workers. With
         features such as direct messaging, an interactive calendar system
-        and an extensive market place, Sidekick contains all the tools to
+        and an extensive marketplace, Sidekick contains all the tools to
         seamlessly manage your respite care needs. Available on both iOS
-        and Andriod, Sidekick is developed using React Native, Redux and
+        and Android, Sidekick is developed using React Native, Redux and
         Firebase."
         date="June 2020 - Current"
         imgSrc={"images/sidekick_icon.webp"}
-        techStack={[<ReactJS/>, <Redux/>, <Firebase/>]}
+        techStack={[<ReactJS />, <Redux />, <Firebase />]}
       />
       <ProjectCard
         title="AutoConnect"
         description="AutoConnect is a generic intercommunication service for autonomous vehicles. 
         Providing a service for vehicles to share real-time sensory data amongst each other, extending 
-        the overall awareness/visibility of hazardous objects on the roads. In cases were vehicle sensors 
+        the overall awareness/visibility of hazardous objects on the roads. In cases where vehicle sensors 
         are limited due to obstructions, AutoConnect will facilitate the transfer of critical information, 
         preventing accidents for traditionally unforeseeable hazards."
         date="September 2019 - April 2020"
         imgSrc={"images/auto_car.jpg"}
-        techStack={[<NodeJS/>, <Python/>, <MsSql/>]}
+        techStack={[<NodeJS />, <Python />, <MsSql />]}
         moreContent="AutoConnect secured 3rd place in the 2020 Student Choice Awards for the anual Queen's University ELEC 490/8 project competition. Supervised by Professor Ning Lu, the AutoConnect team is seen below."
         teamMembers={[JohnBowden, SudhirPokhrel, DrewHarshaw]}
       />
@@ -98,12 +99,12 @@ export default function Projects() {
             <ProjectCard
               title="Wildfire Predictor"
               description="Developed a Wildfire Predictor during an Ericsson on-site company hackathon. Leveraging 
-              the power of machine learning, historical wildfires and historical weather data were used for training 
-              and current weather data was used for testing. Our predictor generates a probabilistic heatmap denoting 
-              the risk of wildfires occurring for a given geographical area."
+              the power of machine learning by using the TensorFlow library, the team developed a ML model to predict the location of 
+              high likely hood locations for wildfires. The model was trained using historical wildfire data, as well as historical weather data.
+              A web interface was developed for displaying the probabilistic heatmap denoting the risk of wildfires occurring for a given geographical area."
               date="May 2019"
               imgSrc={"images/unavailable-image.jpg"}
-              techStack={[<ReactJS/>, <Python/>]}
+              techStack={[<ReactJS />, <Python />, <TensorFlow />]}
               moreContent=""
               teamMembers={[TadhgMcdonald, DavidChoi, DrewHarshaw]}
             />
@@ -111,11 +112,11 @@ export default function Projects() {
             <ProjectCard
               title="ASL Translator"
               description="Developed an American Sign Language (ASL) Translator during QHacks 2018 which has the capability 
-              to convert speech into animated ASL sign. Inversly, ASL Translator is able to recognize physical ASL signs using 
+              to convert speech into animated ASL sign. Inversly, ASL Translator can recognize physical ASL signs using 
               Leap Motion and translate to the proper text. Winner of the Sun Life Financial Sponsor prize."
               date="February 2018"
               imgSrc="images/leapMotion.png"
-              techStack={[<LeapJS/>, <NodeJS/>]}
+              techStack={[<LeapJS />, <NodeJS />]}
               moreContent="https://devpost.com/software/asl-translator"
               teamMembers={[
                 TeddKourkounakis,
@@ -134,14 +135,14 @@ export default function Projects() {
               Arduino opens or closes the 3d printed locking mechanism through the use of servo motors."
               date="January 2016 - April 2016"
               imgSrc="images/lokit.jpg"
-              techStack={[<Arduino/>]}
+              techStack={[<Arduino />]}
               moreContent=""
               teamMembers={[MichaelLang, DrewHarshaw]}
             />
 
             <ProjectCard
               title="Quadcopter Drone"
-              description="Designed and built quadrocopter drone in Grade 12 of high school for Tech Design course.
+              description="Designed and built a quadrocopter drone for my final culminating project in High School Technical Design course.
               Used Autodesk Inventor 3D modelling tool to design the chassis and used a Computer Numerical Control 
               (CNC) machine to mill the aluminium chassis. The drone was able to sustain a flight time of 7 minutes."
               date="January 2015 - April 2015"

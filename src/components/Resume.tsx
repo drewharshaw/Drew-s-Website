@@ -214,7 +214,7 @@ export default function Resume() {
                     color="textPrimary"
                     className={classes.institution}
                   >
-                    Walker Indsutries
+                    Walker Industries
                   </Typography>
                 </Grid>
                 <Grid item sm={2}>
@@ -295,13 +295,17 @@ export default function Resume() {
               </Typography>
             </Grid>
             <Grid container direction="row" xs={8} sm={10}>
-              {[<ReactJS />, <Redux />, <OpenCV />, <OpenGL/>, <TensorFlow/>].map(
-                (library, index) => (
-                  <Grid item className={classes.icon} key={index}>
-                    {library}
-                  </Grid>
-                )
-              )}
+              {[
+                <ReactJS />,
+                <Redux />,
+                <OpenCV />,
+                <OpenGL />,
+                <TensorFlow />,
+              ].map((library, index) => (
+                <Grid item className={classes.icon} key={index}>
+                  {library}
+                </Grid>
+              ))}
             </Grid>
           </Grid>
           <Grid container spacing={8}>
@@ -310,22 +314,21 @@ export default function Resume() {
                 Tools
               </Typography>
             </Grid>
-            <Grid  container direction="row" xs={8} sm={10}>
+            <Grid container direction="row" xs={8} sm={10}>
               {[
-                <VSCode/>,
-                <Jira/>,
-                <Firebase/>,
-                <Git/>,
-                <BitBucket/>,
-                <VisualStudio/>,
-                <Eclipse/>,
-                <SQLServerStudio/>,
+                <VSCode />,
+                <Jira />,
+                <Firebase />,
+                <Git />,
+                <BitBucket />,
+                <VisualStudio />,
+                <Eclipse />,
+                <SQLServerStudio />,
               ].map((tool, index) => (
-                  <Grid item className={classes.icon} key={index}>
-                    {tool}
-                  </Grid>
-                )
-              )}
+                <Grid item className={classes.icon} key={index}>
+                  {tool}
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>
