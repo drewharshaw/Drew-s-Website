@@ -99,8 +99,8 @@ export default function Projects() {
             <ProjectCard
               title="Wildfire Predictor"
               description="Developed a Wildfire Predictor during an Ericsson on-site company hackathon. Leveraging 
-              the power of machine learning by using the TensorFlow library, the team developed a ML model to predict the location of 
-              high likely hood locations for wildfires. The model was trained using historical wildfire data, as well as historical weather data.
+              the power of machine learning by using the TensorFlow library, the team developed a ML model to predict
+              high likelihood locations of wildfires. The model was trained using historical wildfire data, as well as historical weather data.
               A web interface was developed for displaying the probabilistic heatmap denoting the risk of wildfires occurring for a given geographical area."
               date="May 2019"
               imgSrc={"images/unavailable-image.jpg"}
@@ -112,7 +112,7 @@ export default function Projects() {
             <ProjectCard
               title="ASL Translator"
               description="Developed an American Sign Language (ASL) Translator during QHacks 2018 which has the capability 
-              to convert speech into animated ASL sign. Inversly, ASL Translator can recognize physical ASL signs using 
+              to convert speech into animated ASL sign. Inversely, ASL Translator can recognize physical ASL signs using 
               Leap Motion and translate to the proper text. Winner of the Sun Life Financial Sponsor prize."
               date="February 2018"
               imgSrc="images/leapMotion.png"
@@ -132,7 +132,7 @@ export default function Projects() {
               thefts. Students can easily and safely lock their bicycles by swiping their student cards on the magnetic 
               card reader. An Arduino microcontroller sends the student information to a centralized server which 
               authenticates the user and saves the necessary information to the database. Once authenticated, the 
-              Arduino opens or closes the 3d printed locking mechanism through the use of servo motors."
+              Arduino opens or closes the 3D printed locking mechanism through the use of servo motors."
               date="January 2016 - April 2016"
               imgSrc="images/lokit.jpg"
               techStack={[<Arduino />]}
@@ -144,7 +144,7 @@ export default function Projects() {
               title="Quadcopter Drone"
               description="Designed and built a quadrocopter drone for my final culminating project in High School Technical Design course.
               Used Autodesk Inventor 3D modelling tool to design the chassis and used a Computer Numerical Control 
-              (CNC) machine to mill the aluminium chassis. The drone was able to sustain a flight time of 7 minutes."
+              (CNC) machine to mill the aluminum chassis. The drone was able to sustain a flight time of 7 minutes."
               date="January 2015 - April 2015"
               imgSrc="images/unavailable-image.jpg"
             />

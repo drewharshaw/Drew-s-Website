@@ -59,9 +59,9 @@ export default function Resume() {
             align="center"
             className={classes.quote}
           >
-            I am a responsible computer engineering student, who is determined,
-            time efficient and hardworking. My ability to listen to others
-            coupled with my open-mindedness allow me to work well as part of a
+            I am a responsible Computer Engineering graduate, who is determined,
+            time-efficient and hardworking. My ability to listen to others
+            coupled with my open-mindedness allows me to work well as part of a
             team.
           </Typography>
         </Grid>
@@ -252,7 +252,7 @@ export default function Resume() {
                   </ListItem>
                   <ListItem>
                     • Designed and developed software for managing employee
-                    timeseets and sales analytics.
+                    timesheets and sales analytics.
                   </ListItem>
                 </List>
               </Typography>
