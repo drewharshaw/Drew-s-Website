@@ -18,6 +18,7 @@ import {
   Java,
   Cplusplus,
   ReactJS,
+  AngularJS,
   Redux,
   OpenCV,
   OpenGL,
@@ -80,7 +81,7 @@ export default function Resume() {
               <img
                 alt={"Queen's University Logo"}
                 src={"images/queensLogo.svg"}
-                className={classes.resumeQueensImg}
+                className={classes.queensLogo}
               />
             </Grid>
 
@@ -121,142 +122,195 @@ export default function Resume() {
           </Typography>
           <Divider />
         </Grid>
-        <Grid item xs>
-          <Grid container spacing={8} direction="row" alignItems="center">
-            <Grid item xs={2}>
-              <img
-                alt={"Ericsson Company Logo"}
-                src={"images/ericsson-icon.svg"}
-                className={classes.resumeImg}
-              />
-            </Grid>
-            <Grid item xs={10}>
-              <Grid container spacing={8} alignItems="center">
-                <Grid item sm={10}>
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                    className={classes.institution}
-                  >
-                    Ericsson
-                  </Typography>
-                </Grid>
-                <Grid item sm={2}>
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    align="center"
-                  >
-                    Ottawa, Canada
-                  </Typography>
-                </Grid>
+        <Grid item container spacing={8} direction="row" alignItems="center">
+          <Grid item xs={2}>
+            <img
+              alt={"AgilityPR Solutions Logo"}
+              src={"images/agilitypr.png"}
+              className={classes.agilityLogo}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Grid container spacing={8} alignItems="center">
+              <Grid item sm={10}>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                  className={classes.institution}
+                >
+                  Agility PR Solutions
+                </Typography>
               </Grid>
-
-              <Grid container alignItems="center">
-                <Grid item sm={10} xs={9}>
-                  <Typography variant="h6" color="textPrimary">
-                    iOS & Web Developer Co-op
-                  </Typography>
-                </Grid>
-                <Grid item sm={2} xs={3}>
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    align="center"
-                  >
-                    May 2018 - August 2019
-                  </Typography>
-                </Grid>
+              <Grid item sm={2}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  Ottawa, Canada
+                </Typography>
               </Grid>
-
-              <Typography variant="subtitle1" color="textPrimary">
-                <List>
-                  <ListItem>
-                    • Contributed to multiple product releases for both iOS and
-                    Web App codebases, implementing React & Redux features to
-                    meet production timelines.
-                  </ListItem>
-                  <ListItem>
-                    • Reduced front-end project settings code size by 360% by
-                    implementing a hierarchical finite state machine, traversed
-                    by a breadth-first search algorithm.
-                  </ListItem>
-                  <ListItem>
-                    • Filled in as Scrum Master on several occasions, keeping
-                    the team on track prioritizing blocking tickets.
-                  </ListItem>
-                  <ListItem>
-                    • Spearheaded the design and implementation of the
-                    applications back-end MS-SQL database, as well as the
-                    migration strategy to transition user data from iOS to Web
-                    App using Python.
-                  </ListItem>
-                </List>
-              </Typography>
             </Grid>
+
+            <Grid container alignItems="center">
+              <Grid item sm={10} xs={9}>
+                <Typography variant="h6" color="textPrimary">
+                  Junior Software Developer
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  January 2020 - Current
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Typography variant="subtitle1" color="textPrimary">
+              <List>
+                <ListItem>
+                  • Contributed to multiple sprints for the Agility Web App,
+                  implementing Angular features to meet production timelines.
+                </ListItem>
+              </List>
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item container spacing={8} direction="row" alignItems="center">
+          <Grid item xs={2}>
+            <img
+              alt={"Ericsson Company Logo"}
+              src={"images/ericsson-icon.svg"}
+              className={classes.ericssonLogo}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Grid container spacing={8} alignItems="center">
+              <Grid item sm={10}>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                  className={classes.institution}
+                >
+                  Ericsson
+                </Typography>
+              </Grid>
+              <Grid item sm={2}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  Ottawa, Canada
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Grid container alignItems="center">
+              <Grid item sm={10} xs={9}>
+                <Typography variant="h6" color="textPrimary">
+                  iOS & Web Developer Co-op
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  May 2018 - August 2019
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Typography variant="subtitle1" color="textPrimary">
+              <List>
+                <ListItem>
+                  • Contributed to multiple product releases for both iOS and
+                  Web App codebases, implementing React & Redux features to meet
+                  production timelines.
+                </ListItem>
+                <ListItem>
+                  • Reduced front-end project settings code size by 360% by
+                  implementing a hierarchical finite state machine, traversed by
+                  a breadth-first search algorithm.
+                </ListItem>
+                <ListItem>
+                  • Filled in as Scrum Master on several occasions, keeping the
+                  team on track prioritizing blocking tickets.
+                </ListItem>
+                <ListItem>
+                  • Spearheaded the design and implementation of the
+                  applications back-end MS-SQL database, as well as the
+                  migration strategy to transition user data from iOS to Web App
+                  using Python.
+                </ListItem>
+              </List>
+            </Typography>
           </Grid>
         </Grid>
 
-        <Grid item xs>
-          <Grid container spacing={8} direction="row" alignItems="center">
-            <Grid item xs={2}>
-              <img
-                alt={"Walker Industries Company Logo"}
-                src={"images/walker.svg"}
-                className={classes.resumeWalkerImg}
-              />
-            </Grid>
-            <Grid item xs={10}>
-              <Grid container spacing={8} alignItems="center">
-                <Grid item sm={10}>
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                    className={classes.institution}
-                  >
-                    Walker Industries
-                  </Typography>
-                </Grid>
-                <Grid item sm={2}>
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    align="center"
-                  >
-                    Niagara Falls, Canada
-                  </Typography>
-                </Grid>
+        <Grid item container spacing={8} direction="row" alignItems="center">
+          <Grid item xs={2}>
+            <img
+              alt={"Walker Industries Company Logo"}
+              src={"images/walker.svg"}
+              className={classes.walkerLogo}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Grid container spacing={8} alignItems="center">
+              <Grid item sm={10}>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                  className={classes.institution}
+                >
+                  Walker Industries
+                </Typography>
               </Grid>
+              <Grid item sm={2}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  Niagara Falls, Canada
+                </Typography>
+              </Grid>
+            </Grid>
 
-              <Grid container alignItems="center">
-                <Grid item sm={10}>
-                  <Typography variant="h6" color="textPrimary">
-                    Business Analyst Intern
-                  </Typography>
-                </Grid>
-                <Grid item sm={2}>
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    align="center"
-                  >
-                    May 2017 - August 2017
-                  </Typography>
-                </Grid>
+            <Grid container alignItems="center">
+              <Grid item sm={10}>
+                <Typography variant="h6" color="textPrimary">
+                  Business Analyst Intern
+                </Typography>
               </Grid>
-              <Typography variant="subtitle1" color="textPrimary">
-                <List>
-                  <ListItem>
-                    • Developed custom business software to automate financial
-                    processes and improve the efficiency of business analytics.
-                  </ListItem>
-                  <ListItem>
-                    • Designed and developed software for managing employee
-                    timesheets and sales analytics.
-                  </ListItem>
-                </List>
-              </Typography>
+              <Grid item sm={2}>
+                <Typography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  align="center"
+                >
+                  May 2017 - August 2017
+                </Typography>
+              </Grid>
             </Grid>
+            <Typography variant="subtitle1" color="textPrimary">
+              <List>
+                <ListItem>
+                  • Developed custom business software to automate financial
+                  processes and improve the efficiency of business analytics.
+                </ListItem>
+                <ListItem>
+                  • Designed and developed software for managing employee
+                  timesheets and sales analytics.
+                </ListItem>
+              </List>
+            </Typography>
           </Grid>
         </Grid>
 
@@ -266,14 +320,14 @@ export default function Resume() {
           </Typography>
           <Divider />
         </Grid>
-        <Grid item xs>
-          <Grid container spacing={8}>
+        <Grid item container xs>
+          <Grid container spacing={8} alignItems="center">
             <Grid item xs={4} sm={2}>
               <Typography variant="h5" color="textPrimary" align="left">
                 Languages
               </Typography>
             </Grid>
-            <Grid container direction="row" xs={8} sm={10}>
+            <Grid item container direction="row" xs={8} sm={8}>
               {[
                 <TypeScript />,
                 <JavaScript />,
@@ -288,14 +342,15 @@ export default function Resume() {
               ))}
             </Grid>
           </Grid>
-          <Grid container spacing={8}>
+          <Grid container spacing={8} alignItems="center">
             <Grid item xs={4} sm={2}>
               <Typography variant="h5" color="textPrimary" align="left">
-                Libraries
+                Libs/Frameworks
               </Typography>
             </Grid>
-            <Grid container direction="row" xs={8} sm={10}>
+            <Grid item container direction="row" xs={8} sm={8}>
               {[
+                <AngularJS />,
                 <ReactJS />,
                 <Redux />,
                 <OpenCV />,
@@ -308,13 +363,13 @@ export default function Resume() {
               ))}
             </Grid>
           </Grid>
-          <Grid container spacing={8}>
+          <Grid container spacing={8} alignItems="center">
             <Grid item xs={4} sm={2}>
               <Typography variant="h5" color="textPrimary" align="left">
                 Tools
               </Typography>
             </Grid>
-            <Grid container direction="row" xs={8} sm={10}>
+            <Grid item container direction="row" xs={8} sm={8}>
               {[
                 <VSCode />,
                 <Jira />,
@@ -346,8 +401,8 @@ const useStyles = makeStyles((theme) => ({
   },
   silhouette: {
     margin: "10px",
-    width: "128px !important",
-    height: "128px !important",
+    width: "128px",
+    height: "128px",
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
@@ -357,31 +412,33 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "75px",
     paddingLeft: "75px",
   },
-  resumeQueensImg: {
+  institution: {
+    fontWeight: 600,
+    fontSize: 28,
+    fontFamily: "Arial, Verdana",
+  },
+  queensLogo: {
     width: "50%",
     height: "124px",
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
   },
-  institution: {
-    fontWeight: 600,
-    fontSize: 28,
-    fontFamily: "Arial, Verdana !important",
+  agilityLogo: {
+    maxWidth: "100%",
+    height: "auto",
   },
-  resumeImg: {
-    width: "50%",
-    height: "100px",
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  resumeWalkerImg: {
-    width: "100%",
+  ericssonLogo: {
+    maxWidth: "50%",
     height: "auto",
     display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
+    margin: "0 auto",
+  },
+  walkerLogo: {
+    maxWidth: "100%",
+    height: "auto",
+    display: "block",
+    margin: "0 auto",
   },
   icon: {
     margin: "15px",

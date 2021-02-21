@@ -94,14 +94,13 @@ const useStyles = makeStyles((theme) => ({
     visibility: "hidden",
   },
   mainContainer: {
-    paddingTop: "32px",
-    paddingLeft: "32px",
+    padding: "0 64px",
     maxWidth: "100%",
     background: "#ffffff",
     position: "relative",
     zIndex: 3,
   },
   sectionBreak: {
-    margin: "40px !important",
+    margin: "40px",
   },
 }));

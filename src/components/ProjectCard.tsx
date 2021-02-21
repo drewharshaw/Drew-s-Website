@@ -37,29 +37,29 @@ export default function ProjectCard(props: IProjectCard) {
       <Grid item>
         <img src={props.imgSrc} className={classes.projectImg} />
       </Grid>
-      <Grid item sm container>
-        <Grid item xs container direction="column" spacing={2}>
-          <Grid item container direction="row" alignItems="center">
-            <Grid item direction="column">
-              <Typography variant="h4" color="textPrimary">
-                {props.title}
-              </Typography>
-              <Typography variant="subtitle2" color="textPrimary">
-                {props.date}
-              </Typography>
-            </Grid>
-            {props.techStack?.map((tech, index) => (
-              <Grid item className={classes.icon} key={index}>
-                {tech}
-              </Grid>
-            ))}
-          </Grid>
-
-          <Grid item xs>
-            <Typography gutterBottom variant="body1">
-              {props.description}
+      <Grid item xs container direction="column" spacing={2}>
+        <Grid item container direction="row" alignItems="center">
+          <Grid item>
+            <Typography variant="h4" color="textPrimary">
+              {props.title}
+            </Typography>
+            <Typography variant="subtitle2" color="textPrimary">
+              {props.date}
             </Typography>
           </Grid>
+          {props.techStack?.map((tech, index) => (
+            <Grid item className={classes.icon} key={index}>
+              {tech}
+            </Grid>
+          ))}
+        </Grid>
+
+        <Grid item xs>
+          <Typography gutterBottom variant="body1">
+            {props.description}
+          </Typography>
+        </Grid>
+        <Grid item container direction="row" justify="flex-end">
           {showContent ? (
             <Grid item xs>
               <Typography variant="body1">{props.moreContent}</Typography>
@@ -71,6 +71,7 @@ export default function ProjectCard(props: IProjectCard) {
                         className={classes.avatar}
                         alt="Team Members"
                         key={index}
+                        src={x?.avatarLink}
                       >
                         {x.initial}
                       </Avatar>
@@ -85,7 +86,7 @@ export default function ProjectCard(props: IProjectCard) {
           {props.moreContent != null ? (
             <Grid>
               <IconButton
-                className={classes.downArrow}
+                className={classes.caret}
                 onClick={() => {
                   setContent(!showContent);
                 }}
@@ -116,9 +117,8 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: "10px",
-    width: "32px !important",
-    height: "32px !important",
-    backgroundColor: "rgb(166, 188, 230) !important",
+    width: "32px",
+    height: "32px",
     fontSize: "15px",
   },
   projectImg: {
@@ -126,8 +126,8 @@ const useStyles = makeStyles((theme) => ({
     height: "160px",
     width: "160px",
   },
-  downArrow: {
-    float: "right",
+  caret: {
+    padding: "9px 12px",
   },
   container: {
     padding: "20px",

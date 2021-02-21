@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     minHeight: "30px",
     backgroundColor: "rgb(34, 34, 34)",
-    color: "white !important" /* TODO: modify theme instead*/,
+    color: "white" /* TODO: modify theme instead*/,
   },
   footerContainer: {
     paddingTop: "40px",
@@ -48,6 +48,9 @@ export default function Footer(props) {
       <Container className={classes.footerNotesContainer}>
         <Link color="inherit" href="/git-cheat-sheet.html">
           Git Cheat Sheet
+        </Link>
+        <Link color="inherit" href="/js-cheat-sheet.html">
+          JS Cheat Sheet
         </Link>
       </Container>
     </Typography>

@@ -17,3 +17,13 @@ export function ScrollSlide(props) {
     </Slide>
   );
 }
+
+export function SlideDown(props) {
+  const { children, trigger } = props;
+
+  return (
+    <Slide in={trigger} direction="down" timeout={350}>
+      {children}
+    </Slide>
+  );
+}

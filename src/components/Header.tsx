@@ -53,14 +53,10 @@ export default function Header(props: IHeaderProps) {
 
   const headerColorChange = () => {
     const { changeColorOnScroll } = props;
-    const windowsScrollTop = window.pageYOffset;
 
-    if (windowsScrollTop > changeColorOnScroll.height) {
-      // turns white
-      setColour("primary");
-    } else {
-      setColour("secondary");
-    }
+    window.pageYOffset > changeColorOnScroll.height
+      ? setColour("primary")
+      : setColour("secondary");
   };
 
   const { fixed } = props;
@@ -132,9 +128,8 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: "10px",
-    width: "64px !important",
-    height: "64px !important",
-    backgroundColor: "rgb(166, 188, 230) !important",
+    width: "64px",
+    height: "64px",
   },
   appBar: {
     display: "flex",
@@ -149,12 +144,12 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "unset",
   },
   transparent: {
-    background: "transparent !important",
-    boxShadow: "none !important",
+    background: "transparent",
+    boxShadow: "none",
     paddingTop: "25px",
   },
   white: {
-    background: "#fff !important",
+    background: "#fff",
   },
   fixed: {
     position: "fixed",
