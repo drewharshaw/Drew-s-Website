@@ -42,6 +42,59 @@ const theme = createMuiTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  '@global': {
+    '*::-webkit-scrollbar': {
+      width: "20px"
+    },
+    '*::-webkit-scrollbar-track': {
+      background: "#CFD8DC"
+    }, 
+    '*::--webkit-scrollbar-thumb': {
+      borderRadius: "6px",
+      border: "3px solid #000000",
+      background: "#000000"
+    }
+  },
+  nestWrapper: {
+    width: "100%",
+    height: "800px",
+    backgroundColor: "rgb(34, 34, 34)",
+  },
+  canvasNest: {
+    zIndex: 0,
+    opacity: "0.7",
+  },
+  anchor: {
+    display: "block",
+    position: "relative",
+    top: "-250px",
+    visibility: "hidden",
+  },
+  mainContainer: {
+    padding: "0 64px",
+    maxWidth: "100%",
+    background: "#ffffff",
+    position: "relative",
+    zIndex: 3,
+    // '& ::-webkit-scrollbar': {
+    //   width: "20px"
+    // },
+    // '& ::-webkit-scrollbar-track': {
+    //   background: "#CFD8DC"
+    // }, 
+    // '& ::--webkit-scrollbar-thumb': {
+    //   borderRadius: "6px",
+    //   border: "3px solid #CFD8DC",
+    //   backgroundColor: "#90A4AE"
+    // }
+  },
+  sectionBreak: {
+    margin: "40px",
+  },
+
+}));
+
 export default function App() {
   const classes = useStyles();
 
@@ -57,7 +110,6 @@ export default function App() {
 
       <div className={classes.nestWrapper}>
         <ReactCanvasNest
-          className="canvasNest"
           config={{
             pointColor: "255, 255, 255",
             lineColor: "255, 255, 255",
@@ -70,37 +122,13 @@ export default function App() {
 
       <Container className={classes.mainContainer}>
         <div className={classes.anchor} id="projects" />
-        <Projects />
+        <Projects/>
         <div className={classes.anchor} id="resume" />
         <Divider className={classes.sectionBreak} />
-        <Resume />
+        <Resume/>
       </Container>
 
-      <Footer />
+      <Footer/>
     </MuiThemeProvider>
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  nestWrapper: {
-    width: "100%",
-    height: "800px",
-    backgroundColor: "rgb(34, 34, 34)",
-  },
-  anchor: {
-    display: "block",
-    position: "relative",
-    top: "-250px",
-    visibility: "hidden",
-  },
-  mainContainer: {
-    padding: "0 64px",
-    maxWidth: "100%",
-    background: "#ffffff",
-    position: "relative",
-    zIndex: 3,
-  },
-  sectionBreak: {
-    margin: "40px",
-  },
-}));

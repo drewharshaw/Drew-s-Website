@@ -52,20 +52,6 @@ export default function Resume() {
             className={classes.silhouette}
           />
         </Grid>
-
-        <Grid item xs>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-            align="center"
-            className={classes.quote}
-          >
-            I am a responsible Computer Engineering graduate, who is determined,
-            time-efficient and hardworking. My ability to listen to others
-            coupled with my open-mindedness allows me to work well as part of a
-            team.
-          </Typography>
-        </Grid>
       </Grid>
 
       <Grid container spacing={3} direction="column">

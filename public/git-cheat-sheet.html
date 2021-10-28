@@ -9,13 +9,15 @@
     <h1 id="git-cheat-sheet">Git Cheat Sheet</h1>
 <h2 id="terminology">Terminology</h2>
 <p><strong>HEAD</strong> - pointer to the last commit in the currently check-out branch (pointing to tip of branch)<br />
-<strong>origin</strong> - points to repository that was cloned (when forking, points to your fork on Github)<br />
+<strong>origin</strong> - pointer to remote repository URL that was cloned (when forking, points to your fork on Github)<br />
 <strong>upstream</strong> - generally refers to original repo that was forked. See <code>git remote</code> for adding remotes<br />
 <strong>untracked files</strong> - are files that git doesn't know about or isn't tracking and can be added with <code>git add &lt;file&gt;</code><br />
-<strong>origin</strong> - pointer to remote repository URL that was cloned (when forking, points to your fork repo on Github)<br />
-<strong>work-tree</strong> - is the working directory of the user where local changes to files can be made<br />
+<strong>working-tree</strong> - is the working directory of the user where local changes to files can be made<br />
 <strong>staging area (index)</strong> - where commits are prepared<br />
 <strong>~<n></strong> - tilde is used to denote a commit object that is nth generation ancestor eg. (master~2 = grandparent of HEAD).</p>
+<picture class="center">
+  <img src="/images/git_cheat_sheet.jpg" alt="" />
+</picture >
 <h2 id="common-commands">Common Commands</h2>
 <h4 id="adding">Adding</h4>
 <p><code>$ git add -A</code> <strong>Stage</strong> all changes<br />
@@ -26,7 +28,8 @@
 <code>$ git checkout -- &lt;file&gt;</code> <strong>Discard changes</strong> to a file in work-tree<br />
 <code>$ git reset --soft HEAD~1</code> <strong>Uncommit</strong> previous commit (moves HEAD to parent commit)<br />
 <code>$ git reset --hard HEAD</code> <strong>Reset</strong> everything <strong>use with caution</strong><br />
-<code>$ git revert HEAD~1</code> <strong>Revert</strong> all changes in HEAD~1 with new commit</p>
+<code>$ git revert HEAD~1</code> <strong>Revert</strong> all changes in HEAD~1 with new commit<br />
+<code>$ git rm --cached &lt;file&gt;</code> <strong>Remove</strong> file from staging area, and mark for removal next commit </p>
 <h4 id="branching">Branching</h4>
 <p><code>$ git branch -a</code> <strong>List</strong> local &amp; remote branches<br />
 <code>$ git branch &lt;new-branch&gt;</code> <strong>Create</strong> new branch<br />
@@ -394,6 +397,12 @@ table tr:nth-child(2n) {
 
 img {
   max-width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
 }
 
 p {

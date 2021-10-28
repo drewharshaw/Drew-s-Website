@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
   footerNotesContainer: {
     textAlign: "right",
+    '& a':{
+      padding: '10px'
+    }
   },
 }));
 
@@ -46,10 +49,16 @@ export default function Footer(props) {
       </Container>
 
       <Container className={classes.footerNotesContainer}>
-        <Link color="inherit" href="/git-cheat-sheet.html">
+        <Link 
+          color="inherit" 
+          href="/git-cheat-sheet.html"
+        >
           Git Cheat Sheet
         </Link>
-        <Link color="inherit" href="/js-cheat-sheet.html">
+        <Link 
+          color="inherit" 
+          href="/js-cheat-sheet.html"
+        >
           JS Cheat Sheet
         </Link>
       </Container>
